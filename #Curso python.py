@@ -19,7 +19,7 @@ input("Apellido:")
 print(input("Dime tu nombre:"))
 print("Tu nombre es "+input("Dime tu nombre:"))
 
-#elegir nombre para cerveza
+#Elegir nombre para cerveza (P dia 1)
 
 print("El nombre de tu cerveza es:"+input("Tipo de cerveza que vendes(clara/negra):")+" "+input("Elije una estación del año:"))
 
