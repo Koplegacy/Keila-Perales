@@ -24,6 +24,7 @@ elif r>k and r>m:
     print("El número mayor es ",r)
 else:
     print("Es el mismo número")
+    
 #Ejercicio 3
 #Una función para contar el numero de elementos en una lista
 def calcular_longitud(objeto):
