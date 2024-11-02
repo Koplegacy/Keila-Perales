@@ -1,0 +1,131 @@
+
+#Problema 1
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+#Problema 2
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+    
+
+#Probema 3
+
+def invertir_cadena(cadena):
+    if len(cadena) == 0:
+        return cadena
+    else:
+        return invertir_cadena(cadena[1:]) + cadena[0]
+
+
+#Problema 4
+
+def potencia(base, exponente):
+    if exponente == 0:
+        return 1
+    else:
+        return base * potencia(base, exponente - 1)
+
+
+#Problema 5
+
+def suma_digitos(n):
+    if n == 0:
+        return 0
+    else:
+        return n % 10 + suma_digitos(n // 10)
+
+
+#Problema 6
+
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+
+#Problema 7
+
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        less_than_pivot = [x for x in arr[1:] if x <= pivot]
+        greater_than_pivot = [x for x in arr[1:] if x > pivot]
+        return quick_sort(less_than_pivot) + [pivot] + quick_sort(greater_than_pivot)
+
+
+#Problema 8
+
+def busqueda_binaria(lista, objetivo, inicio=0, fin=None):
+    if fin is None:
+        fin = len(lista) - 1
+    if inicio > fin:
+        return -1
+
+    mid = (inicio + fin) // 2
+    if lista[mid] == objetivo:
+        return mid
+    elif lista[mid] < objetivo:
+        return busqueda_binaria(lista, objetivo, mid + 1, fin)
+    else:
+        return busqueda_binaria(lista, objetivo, inicio, mid - 1)
+
+
+#Problema 9
+
+def multiplicar_matrices(A, B):
+    if len(A[0]) != len(B):
+        raise ValueError("Número de columnas de A debe ser igual al número de filas de B")
+    result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+    return result
+
+
+#Problema 10
+def potencia_matriz(matriz, exponente):
+    if exponente == 0:
+        return [[1 if i == j else 0 for j in range(len(matriz))] for i in range(len(matriz))]
+    elif exponente == 1:
+        return matriz
+    else:
+        mitad = potencia_matriz(matriz, exponente // 2)
+        mitad_cuadrado = multiplicar_matrices(mitad, mitad)
+        return mitad_cuadrado if exponente % 2 == 0 else multiplicar_matrices(mitad_cuadrado, matriz)
